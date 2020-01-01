@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  freeway:
+    image: mysql:5.7.25
+    container_name: mysql
+    hostname: mysql
+    networks:
+      - default
+    volumes:
+      - ~/docker/volumes/mysql/data:/var/lib/mysql
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=jpa_one_to_many_demo
+    ports:
+      - "3306:3306"
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+    restart: always
